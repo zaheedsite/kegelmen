@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Program Senam Kegel Pria — Latih Kontrol 5 Menit Sehari</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pri: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a' },
+            ok:  { 50:'#f0fdf4',100:'#dcfce7',500:'#22c55e',600:'#16a34a' },
+            err: { 50:'#fef2f2',100:'#fee2e2',500:'#ef4444' },
+            sf:  { 50:'#f8fafc',100:'#f1f5f9',200:'#e2e8f0',300:'#cbd5e1' }
+          },
+          fontFamily: { sans:['Inter','system-ui','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::selection{background:#2563eb;color:#fff}
+    ::-webkit-scrollbar{width:3px}
+    ::-webkit-scrollbar-track{background:#f1f5f9}
+    ::-webkit-scrollbar-thumb{background:#2563eb;border-radius:9px}
+
+    .fade{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+    .fade.on{opacity:1;transform:translateY(0)}
+
+    .pulse-ring{animation:pulseRing 2.4s ease-in-out infinite}
+    @keyframes pulseRing{0%,100%{box-shadow:0 0 0 0 rgba(37,99,235,.35)}50%{box-shadow:0 0 0 10px rgba(37,99,235,0)}}
+
+    .strike{position:relative}
+    .strike::after{content:'';position:absolute;left:-2px;right:-2px;top:50%;height:2px;background:#ef4444;transform:rotate(-7deg);border-radius:1px}
+
+    .bar{transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1)}
+    .bar.on{transform:translateY(0)}
+
+    .float{animation:floaty 6s ease-in-out infinite}
+    @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  </style>
+</head>
+<body class="bg-white text-slate-700 font-sans antialiased">
+
+<div class="max-w-[480px] mx-auto relative">
+
+  <!-- ===== 1. HERO ===== -->
+  <section class="relative overflow-hidden px-6 pt-12 pb-20">
+    <div class="absolute inset-0 bg-gradient-to-br from-pri-600 via-pri-700 to-pri-900"></div>
+    <div class="absolute top-10 right-0 w-48 h-48 bg-pri-400/20 rounded-full blur-[60px] float"></div>
+    <div class="absolute bottom-0 left-0 w-36 h-36 bg-blue-400/10 rounded-full blur-[50px] float" style="animation-delay:-3s"></div>
+    <div class="absolute top-0 left-0 right-0 h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ccircle%20cx%3D%221%22%20cy%3D%221%22%20r%3D%220.6%22%20fill%3D%22rgba(255%2C255%2C255%2C0.06)%22%2F%3E%3C%2Fsvg%3E')] opacity-60"></div>
+
+    <div class="relative z-10 fade">
+      <div class="inline-flex items-center justify-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-sm mb-7 mx-auto">
+        <span class="w-1.5 h-1.5 rounded-full bg-ok-500 animate-pulse"></span>
+        <span class="text-center text-[10px] font-bold uppercase tracking-[.18em] text-white/80">Program Latihan Privat</span>
+      </div>
+
+      <h1 class="text-[29px] leading-[1.16] font-extrabold text-white mb-5 tracking-tight text-center">
+        Sering Terlalu Cepat?<br>
+        Latih Otot <span class="text-pri-200">"Rem" Pria</span><br>
+        Cukup 5 Menit Sehari
+      </h1>
+
+      <img
+        src="https://cdn.scalev.id/uploads/1770094878/51IA0EczZEEaUzeY2V24Xw/11290448-(1).gif"
+        alt="Ilustrasi latihan kontrol pria"
+        class="w-full max-w-[320px] mx-auto mb-7 rounded-2xl shadow-xl shadow-black/20"
+        loading="lazy"
+      >
+
+      <p class="text-[15px] leading-[1.65] text-blue-100/80 mb-8 max-w-[340px]">
+        Panduan latihan untuk membantu pria melatih kontrol ejakulasi secara natural — tanpa obat, tanpa alat, dan bisa dilakukan diam-diam di rumah.
+      </p>
+
+      <button onclick="go()" class="pulse-ring w-full bg-white hover:bg-blue-50 active:bg-sf-100 text-pri-700 font-extrabold text-[15px] py-4 rounded-2xl transition-all duration-150 active:scale-[.97] shadow-xl shadow-black/10">
+        Saya Mau Kontrol Lebih Baik
+      </button>
+
+      <p class="mt-3 text-[12px] text-blue-200/60 text-center">Akses e-book + video. Cocok untuk pemula.</p>
+
+      <div class="flex items-center justify-center gap-4 mt-6 text-[12px] text-blue-100/70">
+        <span class="flex items-center gap-1">⏱ 5 menit</span>
+        <span class="w-[3px] h-[3px] rounded-full bg-white/30"></span>
+        <span class="flex items-center gap-1">🔒 Privat</span>
+        <span class="w-[3px] h-[3px] rounded-full bg-white/30"></span>
+        <span class="flex items-center gap-1">✔ Tanpa obat</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== 2. PROBLEM ===== -->
+  <section class="px-6 pb-14 fade">
+    <span class="block w-fit mx-auto mt-6 text-center text-[11px] font-extrabold uppercase tracking-[.14em] text-err-500 bg-err-100 border border-err-100 px-3.5 py-1.5 rounded-full mb-5">Masalah yang Sering Dirasakan</span>
+
+    <div class="space-y-3 mb-7">
+      <p class="text-[17px] leading-relaxed text-slate-800 font-medium">Baru mulai sudah ingin selesai.</p>
+      <p class="text-[17px] leading-relaxed text-slate-800 font-medium">Makin ditahan, makin <span class="text-err-500">panik</span>.</p>
+      <p class="text-[17px] leading-relaxed text-slate-800 font-medium">Alih-alih menikmati, kepala penuh pikiran.</p>
+    </div>
+
+    <div class="space-y-2 mb-7">
+      <div class="flex items-center gap-3 p-4 rounded-2xl bg-err-50/70 border border-err-100">
+        <span class="text-err-500 text-sm">●</span>
+        <span class="text-[15px] text-slate-600">Takut mengecewakan pasangan</span>
+      </div>
+      <div class="flex items-center gap-3 p-4 rounded-2xl bg-err-50/70 border border-err-100">
+        <span class="text-err-500 text-sm">●</span>
+        <span class="text-[15px] text-slate-600">Tidak percaya diri di ranjang</span>
+      </div>
+      <div class="flex items-center gap-3 p-4 rounded-2xl bg-err-50/70 border border-err-100">
+        <span class="text-err-500 text-sm">●</span>
+        <span class="text-[15px] text-slate-600">Sudah coba berbagai cara tapi belum konsisten</span>
+      </div>
+    </div>
+
+    <div class="p-4 rounded-2xl bg-pri-50 border border-pri-100 text-center mb-3">
+      <p class="text-[16px] leading-relaxed text-slate-700">Masalahnya bukan lemah —<br>tapi <strong class="text-pri-800">belum dilatih.</strong></p>
+    </div>
+  </section>
+
+
+  <!-- ===== 3. EDUCATION ===== -->
+  <section class="px-6 py-14 fade">
+    <span class="block w-fit mx-auto mt-0 text-center text-[11px] font-extrabold uppercase tracking-[.14em] text-pri-600 bg-pri-50 border border-pri-100 px-3.5 py-1.5 rounded-full mb-5">Penjelasan Singkat</span>
+
+    <h2 class="text-[25px] leading-tight font-extrabold text-slate-900 mb-5 tracking-tight text-center">
+      Kuncinya Ada di<br>Otot Dasar Panggul
+    </h2>
+
+        <img
+      src="otot.png"
+      alt="Ilustrasi otot dasar panggul"
+      class="w-full max-w-[300px] mx-auto mb-6 rounded-2xl shadow-lg shadow-black/10"
+      loading="lazy"
+    >
+
+    <div class="space-y-3 mb-8">
+      <p class="text-[15px] leading-relaxed text-slate-500">Otot ini berperan penting dalam kontrol saat berhubungan intim.</p>
+      <p class="text-[15px] leading-relaxed text-slate-500">Banyak pria tidak sadar atau tidak pernah melatihnya — padahal seperti otot lain, ia bisa dilatih.</p>
+    </div>
+
+    <div class="space-y-3 mb-9">
+      <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-sf-50 border border-sf-200">
+        <div class="shrink-0 w-8 h-8 rounded-xl bg-pri-600 text-white text-[13px] font-bold flex items-center justify-center">1</div>
+        <div><p class="text-[14px] font-semibold text-slate-800">Deteksi otot yang benar</p><p class="text-[13px] text-slate-400 mt-0.5">Banyak pria salah otot. Kami ajarkan cara menemukannya.</p></div>
+      </div>
+      <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-sf-50 border border-sf-200">
+        <div class="shrink-0 w-8 h-8 rounded-xl bg-pri-600 text-white text-[13px] font-bold flex items-center justify-center">2</div>
+        <div><p class="text-[14px] font-semibold text-slate-800">Ritme kontraksi & relaksasi</p><p class="text-[13px] text-slate-400 mt-0.5">Kontrol bukan cuma menahan — tapi timing yang tepat.</p></div>
+      </div>
+      <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-sf-50 border border-sf-200">
+        <div class="shrink-0 w-8 h-8 rounded-xl bg-pri-600 text-white text-[13px] font-bold flex items-center justify-center">3</div>
+        <div><p class="text-[14px] font-semibold text-slate-800">Latihan bertahap</p><p class="text-[13px] text-slate-400 mt-0.5">Tingkatkan kemampuan secara pelan dan konsisten.</p></div>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center gap-3 py-5 rounded-2xl bg-pri-50/80 border border-pri-100">
+      <div class="text-center"><div class="w-12 h-12 rounded-2xl bg-white border border-pri-200 shadow-sm flex items-center justify-center mb-1.5 mx-auto"><svg class="w-5 h-5 text-pri-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div><span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Temukan</span></div>
+      <svg class="w-4 h-4 text-pri-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+      <div class="text-center"><div class="w-12 h-12 rounded-2xl bg-white border border-pri-200 shadow-sm flex items-center justify-center mb-1.5 mx-auto"><svg class="w-5 h-5 text-pri-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div><span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Latih</span></div>
+      <svg class="w-4 h-4 text-pri-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+      <div class="text-center"><div class="w-12 h-12 rounded-2xl bg-pri-600 shadow-md shadow-pri-600/20 flex items-center justify-center mb-1.5 mx-auto"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div><span class="text-[10px] font-bold uppercase tracking-wider text-pri-700">Kontrol</span></div>
+    </div>
+  </section>
+
+
+  <!-- ===== 4. PRODUCT ===== -->
+  <section class="px-6 py-14 fade">
+    <span class="inline-block text-[10px] font-bold uppercase tracking-[.18em] text-pri-600 bg-pri-50 border border-pri-100 px-3 py-1 rounded-full mb-5">Isi Program</span>
+
+    <h2 class="text-[25px] leading-tight font-extrabold text-slate-900 mb-3 tracking-tight">Program Senam Kegel<br>Pria 5 Menit</h2>
+    <p class="text-[15px] leading-relaxed text-slate-500 mb-8">Latihan sederhana di rumah. Tanpa alat, tanpa obat — cukup 5 menit sehari.</p>
+
+    <div class="space-y-2.5 mb-8">
+      <div class="flex items-center gap-3 p-3.5 rounded-2xl bg-sf-50 border border-sf-200">
+        <span class="text-lg">📖</span>
+        <span class="text-[15px] text-slate-700 font-medium">E-book panduan lengkap</span>
+      </div>
+      <div class="flex items-center gap-3 p-3.5 rounded-2xl bg-sf-50 border border-sf-200">
+        <span class="text-lg">🎬</span>
+        <span class="text-[15px] text-slate-700 font-medium">Video latihan step-by-step</span>
+      </div>
+      <div class="flex items-center gap-3 p-3.5 rounded-2xl bg-sf-50 border border-sf-200">
+        <span class="text-lg">⏱</span>
+        <span class="text-[15px] text-slate-700 font-medium">Jadwal latihan 5 menit/hari</span>
+      </div>
+      <div class="flex items-center gap-3 p-3.5 rounded-2xl bg-sf-50 border border-sf-200">
+        <span class="text-lg">✅</span>
+        <span class="text-[15px] text-slate-700 font-medium">Checklist progress mingguan</span>
+      </div>
+      <div class="flex items-center gap-3 p-3.5 rounded-2xl bg-pri-50 border border-pri-200">
+        <span class="text-lg">🎁</span>
+        <span class="text-[15px] text-pri-700 font-semibold">Bonus: Panduan hubungan harmonis</span>
+      </div>
+    </div>
+
+    <button onclick="go()" class="w-full bg-pri-600 hover:bg-pri-700 active:bg-pri-800 text-white font-extrabold text-[15px] py-4 rounded-2xl shadow-lg shadow-pri-600/20 transition-all duration-150 active:scale-[.97]">
+      Saya Mau Mulai Latihan
+    </button>
+  </section>
+
+
+  <!-- ===== 5. AUTHORITY ===== -->
+  <section class="px-6 py-14 bg-sf-50/60 fade">
+    <span class="inline-block text-[10px] font-bold uppercase tracking-[.18em] text-pri-600 bg-white border border-pri-100 px-3 py-1 rounded-full mb-5">Mengapa Bisa Dipercaya</span>
+
+    <h2 class="text-[23px] leading-tight font-extrabold text-slate-900 mb-5 tracking-tight">Pendekatan yang<br>Sudah Dikenal Luas</h2>
+
+    <div class="space-y-3 mb-9">
+      <p class="text-[15px] leading-relaxed text-slate-500">Senam Kegel dikenal luas sebagai metode untuk memperkuat otot dasar panggul pada pria.</p>
+      <p class="text-[15px] leading-relaxed text-slate-500">Dengan latihan yang konsisten, metode ini dapat membantu meningkatkan awareness dan kontrol tubuh.</p>
+    </div>
+
+    <div class="space-y-3">
+      <div class="p-5 rounded-2xl bg-white border border-sf-200 shadow-sm">
+        <div class="flex gap-0.5 mb-2.5"><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span></div>
+        <p class="text-[14px] text-slate-600 leading-relaxed italic mb-2.5">"Awalnya bingung otot mana yang harus dipakai. Setelah ikut video-nya, baru paham. Sekarang lebih tenang dan sadar tubuh sendiri."</p>
+        <p class="text-[11px] text-slate-400 font-semibold">— R, 34 tahun</p>
+      </div>
+      <div class="p-5 rounded-2xl bg-white border border-sf-200 shadow-sm">
+        <div class="flex gap-0.5 mb-2.5"><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span></div>
+        <p class="text-[14px] text-slate-600 leading-relaxed italic mb-2.5">"5 menit itu ringan banget, jadi konsisten. Belum sempurna, tapi rasa paniknya berkurang banyak."</p>
+        <p class="text-[11px] text-slate-400 font-semibold">— D, 29 tahun</p>
+      </div>
+      <div class="p-5 rounded-2xl bg-white border border-sf-200 shadow-sm">
+        <div class="flex gap-0.5 mb-2.5"><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-sf-300 text-sm">★</span></div>
+        <p class="text-[14px] text-slate-600 leading-relaxed italic mb-2.5">"Yang saya suka, ini privat. Nggak perlu cerita ke siapa-siapa. E-book-nya jelas dan nggak memalukan."</p>
+        <p class="text-[11px] text-slate-400 font-semibold">— A, 41 tahun</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== 6. BENEFITS ===== -->
+  <section class="px-6 py-14 fade">
+    <span class="inline-block text-[10px] font-bold uppercase tracking-[.18em] text-pri-600 bg-pri-50 border border-pri-100 px-3 py-1 rounded-full mb-5">Yang Bisa Berubah</span>
+
+    <h2 class="text-[23px] leading-tight font-extrabold text-slate-900 mb-8 tracking-tight">Dengan Latihan Konsisten,<br>Anda Bisa Merasakan:</h2>
+
+    <div class="grid grid-cols-1 gap-3 mb-6">
+      <div class="flex items-center gap-3.5 p-4 rounded-2xl bg-ok-50 border border-ok-100">
+        <div class="shrink-0 w-8 h-8 rounded-full bg-ok-500 flex items-center justify-center">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <span class="text-[15px] text-slate-700 font-medium">Lebih tenang saat berhubungan</span>
+      </div>
+      <div class="flex items-center gap-3.5 p-4 rounded-2xl bg-ok-50 border border-ok-100">
+        <div class="shrink-0 w-8 h-8 rounded-full bg-ok-500 flex items-center justify-center">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <span class="text-[15px] text-slate-700 font-medium">Lebih sadar dengan tubuh sendiri</span>
+      </div>
+      <div class="flex items-center gap-3.5 p-4 rounded-2xl bg-ok-50 border border-ok-100">
+        <div class="shrink-0 w-8 h-8 rounded-full bg-ok-500 flex items-center justify-center">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <span class="text-[15px] text-slate-700 font-medium">Lebih percaya diri</span>
+      </div>
+      <div class="flex items-center gap-3.5 p-4 rounded-2xl bg-ok-50 border border-ok-100">
+        <div class="shrink-0 w-8 h-8 rounded-full bg-ok-500 flex items-center justify-center">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <span class="text-[15px] text-slate-700 font-medium">Tidak lagi panik di tengah momen</span>
+      </div>
+    </div>
+
+    <p class="text-[12px] text-slate-400 text-center leading-relaxed">Hasil tiap orang bisa berbeda tergantung konsistensi latihan.</p>
+  </section>
+
+
+  <!-- ===== 7. OFFER ===== -->
+  <section id="offer" class="px-6 py-14 fade">
+    <div class="relative overflow-hidden rounded-3xl border border-pri-200 bg-gradient-to-br from-pri-600 via-pri-700 to-pri-800 p-7 shadow-2xl shadow-pri-600/15">
+      <div class="absolute -top-16 -right-16 w-44 h-44 bg-white/5 rounded-full"></div>
+      <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-white/5 rounded-full"></div>
+      <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2230%22%20height%3D%2230%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ccircle%20cx%3D%221%22%20cy%3D%221%22%20r%3D%220.5%22%20fill%3D%22rgba(255%2C255%2C255%2C0.04)%22%2F%3E%3C%2Fsvg%3E')]"></div>
+
+      <div class="relative z-10 text-center">
+        <span class="inline-block text-[10px] font-bold uppercase tracking-[.18em] text-pri-200 bg-white/10 border border-white/10 px-3 py-1 rounded-full">Penawaran Khusus</span>
+
+        <h2 class="text-[25px] leading-tight font-extrabold text-white mt-4 mb-2 tracking-tight">Mulai Latihan Hari Ini</h2>
+        <p class="text-[14px] text-blue-100/70 leading-relaxed mb-7">Akses langsung dari HP. Privat, tanpa seorang pun tahu.</p>
+
+        <div class="mb-1.5"><span class="text-[15px] text-blue-200/70 strike">Rp399.000</span></div>
+        <div class="flex items-baseline justify-center gap-0.5 mb-1.5">
+          <span class="text-[14px] text-blue-100/80">Rp</span>
+          <span class="text-[50px] font-black text-white leading-none">89</span>
+          <span class="text-[14px] text-blue-100/80">.000</span>
+        </div>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/15 mb-7">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-300 animate-pulse"></span>
+          <span class="text-[11px] font-semibold text-white">Hemat 77% hari ini</span>
+        </div>
+
+        <button onclick="go()" class="w-full bg-white hover:bg-blue-50 active:bg-sf-100 text-pri-700 font-extrabold text-[15px] py-4 rounded-2xl shadow-xl transition-all duration-150 active:scale-[.97]">
+          Ambil Program Sekarang
+        </button>
+        <div class="flex items-center justify-center gap-4 mt-3.5 text-[11px] text-blue-200/60">
+          <span>🔒 Pembayaran aman</span><span>📱 Akses instan</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== 8. GUARANTEE ===== -->
+  <section class="px-6 py-10 fade">
+    <div class="flex items-start gap-4 p-5 rounded-2xl bg-sf-50 border border-sf-200">
+      <div class="shrink-0 w-11 h-11 rounded-2xl bg-pri-50 border border-pri-100 flex items-center justify-center">
+        <svg class="w-5 h-5 text-pri-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      </div>
+      <div>
+        <h3 class="text-[16px] font-bold text-slate-900 mb-1">Garansi 30 Hari</h3>
+        <p class="text-[14px] text-slate-500 leading-relaxed">Ikuti program dan isi checklist latihan. Jika setelah 30 hari Anda tidak merasakan manfaat sama sekali, hubungi kami untuk pengembalian dana penuh.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== 9. FAQ ===== -->
+  <section class="px-6 py-14 fade">
+    <span class="inline-block text-[10px] font-bold uppercase tracking-[.18em] text-pri-600 bg-pri-50 border border-pri-100 px-3 py-1 rounded-full mb-5">FAQ</span>
+    <h2 class="text-[23px] leading-tight font-extrabold text-slate-900 mb-7 tracking-tight">Pertanyaan Umum</h2>
+    <div class="space-y-2" id="faq"></div>
+  </section>
+
+
+  <!-- ===== 10. FINAL CTA ===== -->
+  <section class="px-6 pt-4 pb-36 fade">
+    <div class="text-center">
+      <div class="w-10 h-[2px] bg-pri-200 rounded-full mx-auto mb-7"></div>
+      <p class="text-[17px] leading-relaxed text-slate-700 mb-2">Anda tidak perlu terus<br>mengandalkan "menahan".</p>
+      <p class="text-[17px] leading-relaxed text-slate-700 mb-9">Mulai dari latihan kecil<br><strong class="text-slate-900">5 menit sehari.</strong></p>
+
+      <button onclick="go()" class="pulse-ring w-full max-w-xs mx-auto block bg-pri-600 hover:bg-pri-700 active:bg-pri-800 text-white font-extrabold text-[15px] py-4 rounded-2xl shadow-lg shadow-pri-600/20 transition-all duration-150 active:scale-[.97]">
+        Saya Mau Kontrol Lebih Baik
+      </button>
+      <p class="mt-3.5 text-[12px] text-slate-400">Rp89.000 · Akses instan · Garansi 30 hari</p>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="px-6 py-7 border-t border-sf-200">
+    <p class="text-[11px] text-slate-400 text-center leading-relaxed">Ini adalah program latihan, bukan pengobatan medis. Hasil bisa berbeda pada tiap individu. Konsultasikan ke dokter jika ada kondisi medis tertentu.<br><br>© 2025 Semua hak dilindungi.</p>
+  </footer>
+
+</div>
+
+
+<!-- STICKY CTA -->
+<div id="bar" class="bar fixed bottom-0 left-0 right-0 z-50 px-4 py-3 bg-white/90 backdrop-blur-lg border-t border-sf-200 shadow-[0_-2px_16px_rgba(0,0,0,0.04)]">
+  <div class="max-w-[480px] mx-auto">
+    <button onclick="go()" class="w-full bg-pri-600 hover:bg-pri-700 active:bg-pri-800 text-white font-extrabold text-[14px] py-3.5 rounded-2xl shadow-lg shadow-pri-600/15 transition-all duration-150 active:scale-[.97]">
+      Ambil Program — Rp89.000
+    </button>
+  </div>
+</div>
+
+
+<!-- TOAST -->
+<div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-[60] px-5 py-3 rounded-2xl bg-slate-800 text-[13px] text-white font-medium shadow-2xl -translate-y-16 opacity-0 transition-all duration-300 pointer-events-none whitespace-nowrap" id="toast">
+  <span id="tmsg"></span>
+</div>
+
+
+<script>
+// FAQ
+const data=[
+  {q:"Ini obat atau suplemen?",a:"Bukan. Ini program latihan digital yang mengajarkan cara melatih otot dasar panggul. Tidak ada bahan kimia, tidak ada yang diminum."},
+  {q:"Apakah perlu alat khusus?",a:"Tidak perlu. Semua latihan hanya menggunakan tubuh Anda sendiri. Bisa dilakukan di mana saja — di rumah, sambil duduk, bahkan saat bekerja."},
+  {q:"Berapa lama sekali latihan?",a:"Cukup 5 menit per hari. Program ini dirancang agar ringan dan mudah konsisten, bahkan untuk yang sibuk."},
+  {q:"Hasilnya instan?",a:"Tidak instan. Ini proses latihan. Sebagian pria mulai merasakan kesadaran tubuh yang lebih baik dalam 1–2 minggu, tapi kontrol yang bermakna butuh latihan konsisten."},
+  {q:"Apakah aman?",a:"Senam Kegel umumnya aman untuk kebanyakan pria. Jika Anda punya riwayat masalah prostat atau kondisi medis lainnya, silakan konsultasi ke dokter terlebih dahulu."},
+  {q:"Apakah pembayaran saya privat?",a:"Ya. Di struk pembayaran akan muncul sebagai produk digital generik. Semua materi diakses secara digital — tidak ada paket yang dikirim ke alamat Anda."}
+];
+const box=document.getElementById('faq');
+data.forEach((f,i)=>{
+  const d=document.createElement('div');
+  d.className='rounded-2xl bg-sf-50 border border-sf-200 overflow-hidden';
+  d.innerHTML=`<button onclick="tg(${i})" class="w-full flex items-center justify-between p-4 text-left"><span class="text-[14px] font-semibold text-slate-700 pr-3">${f.q}</span><svg id="ic${i}" class="w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></button><div id="an${i}" class="hidden px-4 pb-4"><p class="text-[14px] text-slate-500 leading-relaxed">${f.a}</p></div>`;
+  box.appendChild(d);
+});
+function tg(n){
+  const o=!document.getElementById('an'+n).classList.contains('hidden');
+  data.forEach((_,j)=>{document.getElementById('an'+j).classList.add('hidden');document.getElementById('ic'+j).style.transform='rotate(0)'});
+  if(!o){document.getElementById('an'+n).classList.remove('hidden');document.getElementById('ic'+n).style.transform='rotate(180deg)'}
+}
+
+// Scroll fade
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')})},{threshold:.1});
+document.querySelectorAll('.fade').forEach(e=>io.observe(e));
+
+// Sticky bar
+const sb=document.getElementById('bar');
+addEventListener('scroll',()=>{sb.classList.toggle('on',scrollY>innerHeight*.7)},{passive:true});
+
+// Scroll to offer
+function go(){document.getElementById('offer')?.scrollIntoView({behavior:'smooth',block:'center'})}
+
+// Toast helper (for when you add real payment link)
+function toast(m){const t=document.getElementById('toast');document.getElementById('tmsg').textContent=m;t.style.transform='translate(-50%,0)';t.style.opacity='1';setTimeout(()=>{t.style.transform='translate(-50%,-60px)';t.style.opacity='0'},2500)}
+</script>
+
+</body>
+</html>
